@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { client, GET_REPOSITORY } from 'shared/api';
 
 const Home: NextPage = () => {
   return (
@@ -62,5 +63,19 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: GET_REPOSITORY,
+    variables: {
+      owner: 'vercel',
+      name: 'next.js'
+    }
+  });
+
+  return {
+    props: {}
+  };
+}
 
 export default Home;

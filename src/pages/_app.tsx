@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
-import { Layout } from 'shared/components/layout';
+import { Layout } from 'shared/components/Layout';
 
 const PAGE_TITLE = 'Github link generator';
 

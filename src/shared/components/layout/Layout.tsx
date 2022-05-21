@@ -12,7 +12,7 @@ export const Layout = ({ title, children }: LayoutProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <main>{children}</main>
+      <main className="container mx-auto p-4">{children}</main>
     </>
   );
 };

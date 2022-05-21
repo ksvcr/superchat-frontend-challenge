@@ -5,7 +5,13 @@ export type RepositoryData = {
   stargazerCount: number;
 };
 
-export type RepositoryParams = {
+export type RepositoryRequestParams = {
   owner: string;
   name: string;
 };
+
+export type RepositoryCustomParams = {
+  color: string;
+};
+
+export type RepositoryParams = RepositoryRequestParams & RepositoryCustomParams;

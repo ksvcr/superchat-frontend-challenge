@@ -1,1 +1,1 @@
-export * from './getClientErrorMessages';
+export * from './getApiError';

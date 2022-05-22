@@ -14,4 +14,8 @@ export type RepositoryCustomParams = {
   color: string;
 };
 
+export type RepositoryResponse = {
+  repository: RepositoryData;
+};
+
 export type RepositoryParams = RepositoryRequestParams & RepositoryCustomParams;

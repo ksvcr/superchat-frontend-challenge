@@ -1,8 +1,15 @@
+export type Owner = {
+  avatarUrl: string;
+  login: string;
+};
+
 export type RepositoryData = {
-  id: string;
+  name: string;
   description: string;
   url: string;
   stargazerCount: number;
+  forkCount: number;
+  owner: Owner;
 };
 
 export type RepositoryRequestParams = {

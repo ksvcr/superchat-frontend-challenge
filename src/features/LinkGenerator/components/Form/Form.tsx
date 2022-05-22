@@ -1,15 +1,17 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
 
 import { TextInput } from 'shared/components/TextInput';
+import { Button } from 'shared/components/Button';
 
 import { RepositoryParams } from 'shared/types';
 
 type FormProps = {
   error?: string;
+  loading?: boolean;
   onSubmit: (data: RepositoryParams) => void;
 };
 
-export const Form = ({ error, onSubmit }: FormProps) => {
+export const Form = ({ error, loading, onSubmit }: FormProps) => {
   const [values, setValues] = useState<RepositoryParams>({
     name: '',
     owner: '',
@@ -52,13 +54,17 @@ export const Form = ({ error, onSubmit }: FormProps) => {
         </label>
         <input type="color" required id="color" value={values.color} onChange={handleChange} />
       </div>
-      <div className="flex items-center justify-between mb-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
-          Generate link
-        </button>
+      <div className="mb-4">
+        <Button loading={loading} type="submit">
+          {loading ? 'Generating...' : 'Generate link'}
+        </Button>
       </div>
 
-      {error && <pre className="text-red-400">{error}</pre>}
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span className="block sm:inline">{error}</span>
+        </div>
+      )}
     </form>
   );
 };

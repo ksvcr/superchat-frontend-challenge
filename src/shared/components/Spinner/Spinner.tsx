@@ -1,9 +1,22 @@
 type SpinnerProps = {
-  size?: 4 | 6 | 8 | 10;
+  size?: 'sm' | 'md' | 'lg';
 };
 
-export const Spinner = ({ size = 8 }: SpinnerProps) => {
-  const className = `inline w-${size} h-${size} mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`;
+const getSizes = (size: string): string => {
+  switch (size) {
+    case 'sm':
+      return 'h-4 w-4';
+    case 'md':
+      return 'h-10 w-10';
+    case 'lg':
+      return 'h-16 w-16';
+    default:
+      return 'h-10 w-10';
+  }
+};
+
+export const Spinner = ({ size = 'md' }: SpinnerProps) => {
+  const className = `inline ${getSizes(size)} mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`;
 
   return (
     <svg role="status" className={className} viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

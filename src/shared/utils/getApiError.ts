@@ -16,7 +16,13 @@ export const getApiError = (error: unknown): ApiError => {
   if (error instanceof ClientError) {
     const messages = getClientErrorMessages(error);
     message = messages.join(', ');
-    statusCode = !error.response.data.repository ? 404 : 400;
+    statusCode = !error.response.data?.repository ? 404 : 400;
+
+    return { message, statusCode };
+  }
+
+  if (error instanceof Error) {
+    message = error.message;
   }
 
   return { message, statusCode };

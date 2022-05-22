@@ -8,6 +8,7 @@ export const useGetRepository = () => {
 
   const handleGetRepository = useCallback(async (params: RepositoryRequestParams) => {
     setLoading(true);
+    setError(undefined);
     const searchParams = new URLSearchParams(params);
 
     return fetch(`api/repository?${searchParams}`)

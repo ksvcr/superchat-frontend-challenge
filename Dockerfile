@@ -23,11 +23,6 @@ WORKDIR /app
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-ARG github_api_url
-ENV GITHUB_API_URL=$github_api_url
-ARG github_auth_token
-ENV GITHUB_AUTH_TOKEN=$github_auth_token
-
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 

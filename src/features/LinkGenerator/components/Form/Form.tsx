@@ -2,6 +2,7 @@ import { useState, ChangeEvent, SyntheticEvent } from 'react';
 
 import { TextInput } from 'shared/components/TextInput';
 import { Button } from 'shared/components/Button';
+import { Alert } from 'shared/components/Alert';
 
 import { RepositoryParams } from 'shared/types';
 
@@ -35,7 +36,7 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
   };
 
   return (
-    <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white" onSubmit={handleSubmit}>
+    <form className="shadow-md rounded px-8 pt-6 pb-8 bg-white" onSubmit={handleSubmit}>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="owner">
           Owner
@@ -56,15 +57,11 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
       </div>
       <div className="mb-4">
         <Button loading={loading} type="submit">
-          {loading ? 'Generating...' : 'Generate link'}
+          {loading ? 'Generating...' : 'Generate'}
         </Button>
       </div>
 
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-          <span className="block sm:inline">{error}</span>
-        </div>
-      )}
+      {error && <Alert type="error">{error}</Alert>}
     </form>
   );
 };

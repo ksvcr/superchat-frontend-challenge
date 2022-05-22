@@ -65,7 +65,11 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
         {loading ? 'Generating...' : 'Generate'}
       </Button>
 
-      {error && <Alert type="error">{error}</Alert>}
+      {error && (
+        <div className="mt-4">
+          <Alert type="error">{error}</Alert>
+        </div>
+      )}
     </form>
   );
 };

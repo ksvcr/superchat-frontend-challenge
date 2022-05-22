@@ -6,11 +6,12 @@ import { RepositoryCard } from 'features/RepositoryCard';
 import { RepositoryData, RepositoryResponse, RepositoryParams, ErrorProps } from 'shared/types';
 
 type RepositoryProps = {
+  params: RepositoryParams;
   data: RepositoryData;
 };
 
-const Repository: NextPage<RepositoryProps> = ({ data }) => {
-  return <RepositoryCard data={data} />;
+const Repository: NextPage<RepositoryProps> = ({ data, params }) => {
+  return <RepositoryCard data={data} params={params} />;
 };
 
 type RepositoryPageParams = {
@@ -36,7 +37,7 @@ export const getServerSideProps: GetServerSideProps<RepositoryProps | ErrorProps
 
     const data = await client.request<RepositoryResponse>(GET_REPOSITORY, { owner, name });
     return {
-      props: { data: data.repository }
+      props: { data: data.repository, params }
     };
   } catch (error) {
     return {

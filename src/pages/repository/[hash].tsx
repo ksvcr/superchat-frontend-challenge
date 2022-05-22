@@ -2,7 +2,7 @@ import type { NextPage, GetServerSideProps } from 'next';
 
 import { client, GET_REPOSITORY } from 'shared/api';
 import { decodeLinkHash, getApiError } from 'shared/utils';
-import { RepositoryCard } from 'shared/components/RepositoryCard';
+import { RepositoryCard } from 'features/RepositoryCard';
 import { RepositoryData, RepositoryResponse, RepositoryParams, ErrorProps } from 'shared/types';
 
 type RepositoryProps = {

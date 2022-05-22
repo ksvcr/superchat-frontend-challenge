@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react';
 
+import { RepositoryCard } from 'features/RepositoryCard';
+
 import { RepositoryParams } from 'shared/types';
 import { useGetRepository } from 'shared/hooks';
-import { RepositoryCard } from 'shared/components/RepositoryCard';
-import { Spinner } from 'shared/components/Spinner';
+import { generateLink } from 'shared/utils';
 
 import { Form } from './components/Form';
 import { GeneratedLink } from './components/GeneratedLink';
-import { generateLink } from 'shared/utils';
 
 export const LinkGenerator = () => {
   const [link, setLink] = useState<string>();

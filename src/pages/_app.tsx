@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import Error from 'next/error';
 import type { AppProps } from 'next/app';
 
-import { Layout } from 'shared/components/Layout';
+import { DefaultLayout } from 'shared/components/DefaultLayout';
 
 const PAGE_TITLE = 'Github link generator';
 
@@ -17,7 +17,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-  const getLayout = Component.getLayout ?? (page => <Layout title={PAGE_TITLE}>{page}</Layout>);
+  const getLayout = Component.getLayout ?? (page => <DefaultLayout title={PAGE_TITLE}>{page}</DefaultLayout>);
 
   if (pageProps.error) {
     const { statusCode, message } = pageProps.error;

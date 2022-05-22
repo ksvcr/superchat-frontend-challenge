@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 import { client, GET_REPOSITORY } from 'shared/api';
 import { decodeLinkHash, getApiError } from 'shared/utils';
@@ -11,7 +12,15 @@ type RepositoryProps = {
 };
 
 const Repository: NextPage<RepositoryProps> = ({ data, params }) => {
-  return <RepositoryCard data={data} params={params} />;
+  return (
+    <>
+      <Head>
+        <meta property="og:title" content={data.name} key="title" />
+        <meta property="og:description" content={data.description} key="description" />
+      </Head>
+      <RepositoryCard data={data} params={params} />
+    </>
+  );
 };
 
 type RepositoryPageParams = {

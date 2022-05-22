@@ -3,6 +3,7 @@ import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { TextInput } from 'shared/components/TextInput';
 import { Button } from 'shared/components/Button';
 import { Alert } from 'shared/components/Alert';
+import { Field } from 'shared/components/Field';
 
 import { RepositoryParams } from 'shared/types';
 
@@ -37,29 +38,25 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
 
   return (
     <form className="shadow-md rounded px-8 pt-6 pb-8 bg-white" onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="owner">
-          Owner
-        </label>
+      <Field label="Owner" id="owner">
         <TextInput required id="owner" value={values.owner} onChange={handleChange} />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-          Repository name
-        </label>
+      </Field>
+      <Field label="Repository name" id="name">
         <TextInput required id="name" value={values.name} onChange={handleChange} />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="color">
-          Color
-        </label>
-        <input type="color" required id="color" value={values.color} onChange={handleChange} />
-      </div>
-      <div className="mb-4">
-        <Button loading={loading} type="submit">
-          {loading ? 'Generating...' : 'Generate'}
-        </Button>
-      </div>
+      </Field>
+      <Field label="Color" id="color">
+        <input
+          className="border rounded bg-white"
+          type="color"
+          id="color"
+          value={values.color}
+          onChange={handleChange}
+        />
+      </Field>
+
+      <Button loading={loading} type="submit">
+        {loading ? 'Generating...' : 'Generate'}
+      </Button>
 
       {error && <Alert type="error">{error}</Alert>}
     </form>

@@ -6,7 +6,7 @@ export const TextInput = ({ value, id, onChange, ...props }: TextInputProps) => 
   return (
     <input
       type="text"
-      className="shadow border rounded w-full py-2 px-3 text-gray-700"
+      className="border rounded w-full py-2 px-3 text-gray-700"
       value={value}
       id={id}
       onChange={onChange}

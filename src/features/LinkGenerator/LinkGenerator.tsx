@@ -11,6 +11,7 @@ import { GeneratedLink } from './components/GeneratedLink';
 
 export const LinkGenerator = () => {
   const [link, setLink] = useState<string>();
+  const [params, setParams] = useState<RepositoryParams>();
 
   const {
     handleGetRepository,
@@ -24,6 +25,7 @@ export const LinkGenerator = () => {
       if (res) {
         const generatedLink = generateLink(data);
         setLink(generatedLink);
+        setParams(data);
       }
     },
     [handleGetRepository]
@@ -43,10 +45,10 @@ export const LinkGenerator = () => {
         </div>
       )}
 
-      {data && (
+      {data && params && (
         <div className="mb-10">
           <h2 className="text-2xl mb-4">Preview</h2>
-          <RepositoryCard data={data} />
+          <RepositoryCard data={data} params={params} />
         </div>
       )}
     </>

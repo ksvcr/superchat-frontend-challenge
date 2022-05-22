@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { RepositoryData } from 'shared/types';
+import { RepositoryData, RepositoryParams } from 'shared/types';
+import { ICONS } from 'shared/constants/icons';
 
 import { StarIcon } from './components/StarIcon';
 import { ForkIcon } from './components/ForkIcon';
@@ -8,23 +9,26 @@ import { ActionLink } from './components/ActionLink';
 
 type RepositoryCardProps = {
   data: RepositoryData;
+  params: RepositoryParams;
 };
 
-export const RepositoryCard = ({ data }: RepositoryCardProps) => {
+export const RepositoryCard = ({ data, params }: RepositoryCardProps) => {
   return (
     <div className="bg-white flex block shadow-md rounded">
-      <div className="flex items-center text-center px-8 py-6 bg-blue-200">
-        <div>
-          <Image width="40" height="40" className="rounded-full" src={data.owner.avatarUrl} alt="" />
-          <div className="space-y-1 font-medium dark:text-white">
-            <div>{data.owner.login}</div>
-          </div>
-        </div>
+      <div className="flex items-center text-center text-4xl px-8 py-6" style={{ backgroundColor: params.color }}>
+        {ICONS[params.icon]}
       </div>
 
       <div className="px-8 pt-6 pb-8">
         <div className="flex items-center mb-4 ">
-          <h2 className="text-xl font-bold leading-none text-gray-900 dark:text-white">{data.name}</h2>
+          <h2 className="text-xl font-bold leading-none text-gray-900">{data.name}</h2>
+          <div className="ml-auto flex items-center">
+            <div className="rounded-full border border-gray-200 overflow-hidden">
+              <Image width="20" height="20" layout="raw" className="block" src={data.owner.avatarUrl} alt="" />
+            </div>
+
+            <div className="ml-2 text-xs"> {data.owner.login}</div>
+          </div>
         </div>
 
         {data.description && <p>{data.description}</p>}

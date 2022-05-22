@@ -4,6 +4,8 @@ import { TextInput } from 'shared/components/TextInput';
 import { Button } from 'shared/components/Button';
 import { Alert } from 'shared/components/Alert';
 import { Field } from 'shared/components/Field';
+import { Select, Option } from 'shared/components/Select';
+import { ICONS } from 'shared/constants/icons';
 
 import { RepositoryParams } from 'shared/types';
 
@@ -13,14 +15,17 @@ type FormProps = {
   onSubmit: (data: RepositoryParams) => void;
 };
 
+const options: Option[] = Object.entries(ICONS).map(([value, label]) => ({ value, label }));
+
 export const Form = ({ error, loading, onSubmit }: FormProps) => {
   const [values, setValues] = useState<RepositoryParams>({
     name: '',
     owner: '',
-    color: '#3b82f6'
+    color: '#9dc1fb',
+    icon: 'pumpkin'
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = event.target;
 
     setValues(values => {
@@ -44,6 +49,9 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
       <Field label="Repository name" id="name">
         <TextInput required id="name" value={values.name} onChange={handleChange} />
       </Field>
+      <Field label="Icon" id="icon">
+        <Select id="icon" options={options} value={values.icon} onChange={handleChange} />
+      </Field>
       <Field label="Color" id="color">
         <input
           className="border rounded bg-white"
@@ -53,7 +61,6 @@ export const Form = ({ error, loading, onSubmit }: FormProps) => {
           onChange={handleChange}
         />
       </Field>
-
       <Button loading={loading} type="submit">
         {loading ? 'Generating...' : 'Generate'}
       </Button>

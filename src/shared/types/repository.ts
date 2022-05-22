@@ -3,6 +3,8 @@ export type Owner = {
   login: string;
 };
 
+export type IconId = 'devil' | 'clown' | 'ghost' | 'skull' | 'pumpkin' | 'zombie';
+
 export type RepositoryData = {
   name: string;
   description: string;
@@ -19,6 +21,7 @@ export type RepositoryRequestParams = {
 
 export type RepositoryCustomParams = {
   color: string;
+  icon: IconId;
 };
 
 export type RepositoryResponse = {

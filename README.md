@@ -1,5 +1,7 @@
 # superchat-frontend-challenge
 
+Demo: https://superchat-frontend-challenge-phi.vercel.app/
+
 ## Development
 
 1. Prepare env variable
@@ -20,7 +22,13 @@
   npm run dev
 ```
 
-4. Run tests
+4. Run storybook
+
+```
+  npm run storybook
+```
+
+5. Run tests
 
 ```
   npm run tests

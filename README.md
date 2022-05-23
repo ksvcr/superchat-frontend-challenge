@@ -2,6 +2,10 @@
 
 Demo: https://superchat-frontend-challenge-phi.vercel.app/
 
+## Stack
+
+React, Typescript, Next.js, Tailwind CS
+
 ## Development
 
 1. Prepare env variable

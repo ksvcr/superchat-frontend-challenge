@@ -1,13 +1,22 @@
 import { useCallback, useState } from 'react';
+import dynamic from 'next/dynamic';
 
-import { RepositoryCard } from 'features/RepositoryCard';
+import type { RepositoryCardProps } from 'features/RepositoryCard';
 
 import { RepositoryParams } from 'shared/types';
 import { useGetRepository } from 'shared/hooks';
 import { generateLink } from 'shared/utils';
 
 import { Form } from './components/Form';
-import { GeneratedLink } from './components/GeneratedLink';
+import type { GeneratedLinkProps } from './components/GeneratedLink';
+
+const RepositoryCard = dynamic<RepositoryCardProps>(() =>
+  import('features/RepositoryCard').then(mod => mod.RepositoryCard)
+);
+
+const GeneratedLink = dynamic<GeneratedLinkProps>(() =>
+  import('./components/GeneratedLink').then(mod => mod.GeneratedLink)
+);
 
 export const LinkGenerator = () => {
   const [link, setLink] = useState<string>();

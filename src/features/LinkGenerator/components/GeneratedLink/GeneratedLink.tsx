@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from 'shared/components/Button';
 import { copyToClipboard } from 'shared/utils/copyToClipboard';
 
-type GeneratedLinkProps = {
+export type GeneratedLinkProps = {
   href: string;
   children: ReactNode;
 };

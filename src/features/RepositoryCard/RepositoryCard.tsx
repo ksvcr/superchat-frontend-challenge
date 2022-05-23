@@ -7,7 +7,7 @@ import { StarIcon } from './components/StarIcon';
 import { ForkIcon } from './components/ForkIcon';
 import { ActionLink } from './components/ActionLink';
 
-type RepositoryCardProps = {
+export type RepositoryCardProps = {
   data: RepositoryData;
   params: RepositoryParams;
 };

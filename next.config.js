@@ -2,10 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    outputStandalone: true,
-    images: {
-      layoutRaw: true
-    }
+    outputStandalone: true
   },
   images: {
     domains: ['avatars.githubusercontent.com']

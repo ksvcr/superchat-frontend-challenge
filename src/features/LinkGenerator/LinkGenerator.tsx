@@ -6,16 +6,19 @@ import type { RepositoryCardProps } from 'features/RepositoryCard';
 import { RepositoryParams } from 'shared/types';
 import { useGetRepository } from 'shared/hooks';
 import { generateLink } from 'shared/utils';
+import { Spinner } from 'shared/components/Spinner';
 
 import { Form } from './components/Form';
 import type { GeneratedLinkProps } from './components/GeneratedLink';
 
-const RepositoryCard = dynamic<RepositoryCardProps>(() =>
-  import('features/RepositoryCard').then(mod => mod.RepositoryCard)
+const RepositoryCard = dynamic<RepositoryCardProps>(
+  () => import('features/RepositoryCard').then(mod => mod.RepositoryCard),
+  { loading: () => <Spinner /> }
 );
 
-const GeneratedLink = dynamic<GeneratedLinkProps>(() =>
-  import('./components/GeneratedLink').then(mod => mod.GeneratedLink)
+const GeneratedLink = dynamic<GeneratedLinkProps>(
+  () => import('./components/GeneratedLink').then(mod => mod.GeneratedLink),
+  { loading: () => <Spinner /> }
 );
 
 export const LinkGenerator = () => {

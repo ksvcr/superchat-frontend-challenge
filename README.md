@@ -4,7 +4,7 @@ Demo: https://superchat-frontend-challenge-phi.vercel.app/
 
 ## Stack
 
-React, Typescript, Next.js, Tailwind CS
+React, Typescript, Next.js, Graphql, Tailwind CS
 
 ## Development
 

@@ -1,5 +1,7 @@
 # superchat-frontend-challenge
 
+Task: https://rounded-beanie-b1b.notion.site/Frontend-Technical-Challenge-366e9b1a686c42ad8a2f23a8f10d3d45
+
 Demo: https://superchat-frontend-challenge-phi.vercel.app/
 
 ## Stack
